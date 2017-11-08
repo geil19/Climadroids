@@ -6,9 +6,6 @@
 
     <!-- llave -->
     <string name="open_weather_maps_app_id">d0f98a9c854bc374db43100a55cbc0ba</string>
-
-
-
     <string name="no_encontrado">Lo sentimos, datos no encontrados.</string>
     <string name="cambiar_ciudad">Cambiar Ciudad</string>
 

@@ -1,15 +1,9 @@
 package com.aplica.andres.climadroid;
 
-/**
- * Created by andres on 07/11/2017.
- */
-
 import java.text.DateFormat;
 import java.util.Date;
 import java.util.Locale;
-
 import org.json.JSONObject;
-
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Handler;
@@ -53,19 +47,10 @@ public class FragmentoClima extends Fragment {
     }
 
 
-    //@Override
-    /*public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        weatherFont = Typeface.createFromAsset(getActivity().getAssets(), "fonts/weather.ttf");
-        ///weatherFont = Typeface.createFromAsset(getActivity().getAssets(), "weather.ttf");
-        updateWeatherData(new CiudadPreferida(getActivity()).getCity());
-    }*/
-
-
-    private void updateWeatherData(final String city){
+    private void datosciudad(final String ciudad){
         new Thread(){
             public void run(){
-                final JSONObject json = Conexion.getJSON(getActivity(), city);
+                final JSONObject json = Conexion.getJSON(getActivity(), ciudad);
                 if(json == null){
                     handler.post(new Runnable(){
                         public void run(){
@@ -77,7 +62,7 @@ public class FragmentoClima extends Fragment {
                 } else {
                     handler.post(new Runnable(){
                         public void run(){
-                            renderWeather(json);
+                            infoclima(json);
                         }
                     });
                 }
@@ -86,7 +71,7 @@ public class FragmentoClima extends Fragment {
     }
 
 
-    private void renderWeather(JSONObject json){
+    private void infoclima(JSONObject json){
 
         try {
 
@@ -145,7 +130,7 @@ public class FragmentoClima extends Fragment {
 
     public void cambiarCiudad(String ciudad){
 
-        updateWeatherData(ciudad);
+        datosciudad(ciudad);
     }
 
 }
